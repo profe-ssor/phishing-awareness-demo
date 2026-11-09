@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phishing Awareness Demo | Training Simulation</title>
+  <style>
+    :root { --blue:#1877f2; --ink:#1c1e21; --muted:#606770; --bg:#f0f2f5; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; min-height:100vh; background:var(--bg); color:var(--ink);
+      font-family:Arial, Helvetica, sans-serif; display:flex; flex-direction:column;
+    }
+    .banner {
+      background:#fff3cd; color:#664d03; border-bottom:1px solid #ffecb5;
+      padding:11px 16px; text-align:center; font-size:14px; font-weight:700;
+    }
+    main {
+      width:min(980px, 92%); margin:auto; padding:46px 0;
+      display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;
+    }
+    .brand h1 { color:var(--blue); font-size:clamp(42px,6vw,58px); margin:0 0 12px; letter-spacing:-2px; }
+    .brand p { font-size:24px; line-height:1.35; margin:0; max-width:440px; }
+    .card {
+      background:white; padding:20px; border-radius:10px;
+      box-shadow:0 2px 12px rgba(0,0,0,.12);
+    }
+    .card h2 { margin:0 0 16px; font-size:20px; }
+    input {
+      width:100%; padding:15px 14px; margin:0 0 12px; border:1px solid #dddfe2;
+      border-radius:6px; font-size:16px; background:#fff;
+    }
+    input:focus { outline:2px solid #bcd6ff; border-color:var(--blue); }
+    button {
+      width:100%; border:0; border-radius:6px; padding:13px;
+      color:white; background:var(--blue); font-size:19px; font-weight:700; cursor:pointer;
+    }
+    button:hover { filter:brightness(.95); }
+    .note { color:var(--muted); font-size:13px; line-height:1.45; margin:14px 2px 0; }
+    .warning {
+      display:none; margin-top:18px; padding:16px; border-radius:8px;
+      background:#fff3cd; border:1px solid #ffecb5; color:#664d03; line-height:1.5;
+    }
+    .warning strong { display:block; font-size:20px; margin-bottom:6px; }
+    footer { text-align:center; color:var(--muted); font-size:12px; padding:18px; }
+    @media (max-width:700px) {
+      main { grid-template-columns:1fr; gap:26px; padding:32px 0; }
+      .brand p { font-size:20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">TRAINING SIMULATION — NOT A REAL LOGIN PAGE</div>
+  <main>
+    <section class="brand">
+      <h1>FaceBook</h1>
+      <p>Connect with friends and the world around you.</p>
+    </section>
+    <section class="card" aria-label="Training login simulation">
+      <h2>Log in to continue</h2>
+      <form id="demo-form" autocomplete="off">
+        <input type="text" placeholder="Email address or phone number"
+               aria-label="Fictional email or phone number">
+        <input type="password" placeholder="Password (use a fictional one)"
+               aria-label="Fictional password">
+        <button type="submit">Log In</button>
+      </form>
+      <p class="note">
+        For this exercise, use made-up details only. This offline demonstration
+        does not send, save, or collect anything you type.
+      </p>
+      <div class="warning" id="warning" role="alert" aria-live="polite">
+        <strong>PHISHING AWARENESS DEMONSTRATION</strong>
+        This was a simulated login screen. A convincing-looking page can still
+        be fake. Before entering credentials, check the website address,
+        confirm the domain, and open the service using your own bookmark or
+        official app. Never share your password or one-time verification code.
+      </div>
+    </section>
+  </main>
+  <footer>Created for cybersecurity awareness training. No credentials are collected.</footer>
+  <script>
+    // Deliberately does not read form values, make network requests, or store data.
+    document.getElementById('demo-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('warning').style.display = 'block';
+      document.getElementById('warning').scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  </script>
+</body>
+</html>
